@@ -66,8 +66,7 @@ namespace Test.Library
                  expectedHealthAfterAttack = gimli.Health-tomas.AttackValue+gimli.DefenseValue;
                  gimli.ReceiveAttack(tomas.AttackValue);
             }     
-            Assert.AreEqual(expectedDamage,tomas.AttackValue);
-            Assert.AreEqual(expectedDefense,gimli.DefenseValue);
+            Assert.AreEqual(expectedHealthAfterAttack,gimli.Health);
         }
     }
 }
