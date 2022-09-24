@@ -15,7 +15,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void TestDwarf()
+        public void TestDwarfDamage()
         {
             int expectedHealthAfterAttack=100;
            Dwarf gimli = new Dwarf("Gimli");
@@ -33,11 +33,41 @@ namespace Test.Library
             
             
             Assert.AreEqual(expectedDamage,tomas.AttackValue);
+        }
+        public void TestDwarfDefense()
+        {
+            int expectedHealthAfterAttack=100;
+           Dwarf gimli = new Dwarf("Gimli");
+           Dwarf tomas = new Dwarf("tomas");
+            tomas.Axe = new Axe();
+            gimli.Helmet = new Helmet();
+            gimli.Shield = new Shield();
+            int expectedDamage = tomas.AttackValue;
+            int expectedDefense = gimli.DefenseValue;
+            if (gimli.DefenseValue < tomas.AttackValue)
+            {
+                 expectedHealthAfterAttack = gimli.Health-tomas.AttackValue+gimli.DefenseValue;
+                 gimli.ReceiveAttack(tomas.AttackValue);
+            }
             Assert.AreEqual(expectedDefense,gimli.DefenseValue);
-            Assert.AreEqual(gimli.Health,expectedHealthAfterAttack);
-        
-
-
+        }
+        public void TestDwarfAttack()
+        {
+            int expectedHealthAfterAttack=100;
+           Dwarf gimli = new Dwarf("Gimli");
+           Dwarf tomas = new Dwarf("tomas");
+            tomas.Axe = new Axe();
+            gimli.Helmet = new Helmet();
+            gimli.Shield = new Shield();
+            int expectedDamage = tomas.AttackValue;
+            int expectedDefense = gimli.DefenseValue;
+            if (gimli.DefenseValue < tomas.AttackValue)
+            {
+                 expectedHealthAfterAttack = gimli.Health-tomas.AttackValue+gimli.DefenseValue;
+                 gimli.ReceiveAttack(tomas.AttackValue);
+            }     
+            Assert.AreEqual(expectedDamage,tomas.AttackValue);
+            Assert.AreEqual(expectedDefense,gimli.DefenseValue);
         }
     }
 }
