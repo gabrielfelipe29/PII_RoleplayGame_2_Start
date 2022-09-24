@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Dwarf
+    public class Dwarf : ICharacter, IAttackItem, IDefenseItem
     {
         private int health = 100;
 

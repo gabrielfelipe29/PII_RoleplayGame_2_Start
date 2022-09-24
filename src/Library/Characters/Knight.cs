@@ -1,6 +1,6 @@
 namespace RoleplayGame
 {
-    public class Knight
+    public class Knight : ICharacter, IAttackItem, IDefenseItem
     {
         private int health = 100;
 
