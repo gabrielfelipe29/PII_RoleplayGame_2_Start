@@ -34,6 +34,7 @@ namespace Test.Library
             
             Assert.AreEqual(expectedDamage,tomas.AttackValue);
         }
+        [Test]
         public void TestDwarfDefense()
         {
             int expectedHealthAfterAttack=100;
@@ -51,6 +52,7 @@ namespace Test.Library
             }
             Assert.AreEqual(expectedDefense,gimli.DefenseValue);
         }
+        [Test]
         public void TestDwarfAttack()
         {
             int expectedHealthAfterAttack=100;
