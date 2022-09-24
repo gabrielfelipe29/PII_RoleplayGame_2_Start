@@ -1,4 +1,6 @@
+
 using NUnit.Framework;
+
 
 
 namespace Test.Library
@@ -15,10 +17,8 @@ namespace Test.Library
         {
             Dwarf gimli = new Dwarf("Gimli");
             Dwarf Tomas = new Dwarf("Tomas");
-            int expectedDamage = gimli.Health - Tomas.AttackValue - gimli.DefenseValue;
-            gimli.ReceiveAttack(Tomas.AttackValue);
-            
-            Assert.Pass();
+            int expectedDamage = gimli.Health - Tomas.AttackValue - gimli.DefenseValue;            
+            Assert.AreEqual(expectedDamage,gimli.ReceiveAttack(Tomas.AttackValue));
         }
     }
 }
