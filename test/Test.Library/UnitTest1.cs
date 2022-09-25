@@ -17,9 +17,9 @@ namespace Test.Library
         [Test]
         public void TestDwarfDamage()
         {
-            int expectedHealthAfterAttack=100;
-           Dwarf gimli = new Dwarf("Gimli");
-           Dwarf tomas = new Dwarf("tomas");
+            int expectedHealthAfterAttack = 100;
+            Dwarf gimli = new Dwarf("Gimli");
+            Dwarf tomas = new Dwarf("tomas");
             tomas.Axe = new Axe();
             gimli.Helmet = new Helmet();
             gimli.Shield = new Shield();
@@ -27,19 +27,19 @@ namespace Test.Library
             int expectedDefense = gimli.DefenseValue;
             if (gimli.DefenseValue < tomas.AttackValue)
             {
-                 expectedHealthAfterAttack = gimli.Health-tomas.AttackValue+gimli.DefenseValue;
-                 gimli.ReceiveAttack(tomas.AttackValue);
+                expectedHealthAfterAttack = gimli.Health - tomas.AttackValue + gimli.DefenseValue;
+                gimli.ReceiveAttack(tomas.AttackValue);
             }
-            
-            
-            Assert.AreEqual(expectedDamage,tomas.AttackValue);
+
+
+            Assert.AreEqual(expectedDamage, tomas.AttackValue);
         }
         [Test]
         public void TestDwarfDefense()
         {
-            int expectedHealthAfterAttack=100;
-           Dwarf gimli = new Dwarf("Gimli");
-           Dwarf tomas = new Dwarf("tomas");
+            int expectedHealthAfterAttack = 100;
+            Dwarf gimli = new Dwarf("Gimli");
+            Dwarf tomas = new Dwarf("tomas");
             tomas.Axe = new Axe();
             gimli.Helmet = new Helmet();
             gimli.Shield = new Shield();
@@ -47,17 +47,17 @@ namespace Test.Library
             int expectedDefense = gimli.DefenseValue;
             if (gimli.DefenseValue < tomas.AttackValue)
             {
-                 expectedHealthAfterAttack = gimli.Health-tomas.AttackValue+gimli.DefenseValue;
-                 gimli.ReceiveAttack(tomas.AttackValue);
+                expectedHealthAfterAttack = gimli.Health - tomas.AttackValue + gimli.DefenseValue;
+                gimli.ReceiveAttack(tomas.AttackValue);
             }
-            Assert.AreEqual(expectedDefense,gimli.DefenseValue);
+            Assert.AreEqual(expectedDefense, gimli.DefenseValue);
         }
         [Test]
         public void TestDwarfAttack()
         {
-            int expectedHealthAfterAttack=100;
-           Dwarf gimli = new Dwarf("Gimli");
-           Dwarf tomas = new Dwarf("tomas");
+            int expectedHealthAfterAttack = 100;
+            Dwarf gimli = new Dwarf("Gimli");
+            Dwarf tomas = new Dwarf("tomas");
             tomas.Axe = new Axe();
             gimli.Helmet = new Helmet();
             gimli.Shield = new Shield();
@@ -65,14 +65,14 @@ namespace Test.Library
             int expectedDefense = gimli.DefenseValue;
             if (gimli.DefenseValue < tomas.AttackValue)
             {
-                 expectedHealthAfterAttack = gimli.Health-tomas.AttackValue+gimli.DefenseValue;
-                 gimli.ReceiveAttack(tomas.AttackValue);
-            }     
-            Assert.AreEqual(expectedHealthAfterAttack,gimli.Health);
+                expectedHealthAfterAttack = gimli.Health - tomas.AttackValue + gimli.DefenseValue;
+                gimli.ReceiveAttack(tomas.AttackValue);
+            }
+            Assert.AreEqual(expectedHealthAfterAttack, gimli.Health);
         }
 
         [Test]
-        public void TestWizardOk()
+        public void TestWizardWithSpell()
         {
             Wizard wiz = new Wizard("Wiz");
             SpellsBook book = new SpellsBook();
@@ -94,7 +94,7 @@ namespace Test.Library
         }
 
         [Test]
-        public void TestWizardNotOk()
+        public void TestWizardWithoutSpell()
         {
             Wizard wiz = new Wizard(null);
             SpellsBook book = new SpellsBook();
@@ -104,11 +104,14 @@ namespace Test.Library
             wiz.SpellsBook = book;
 
 
+
             string expectedName = null;
+            int expectedHealth = wiz.Health;
             int expectedAttackValue = wiz.SpellsBook.AttackValue + wiz.Staff.AttackValue;
             int expectedDefenseValue = wiz.SpellsBook.DefenseValue + wiz.Staff.DefenseValue;
 
             Assert.AreEqual(expectedName, wiz.Name);
+            Assert.AreEqual(expectedHealth, wiz.Health);
             Assert.AreEqual(expectedAttackValue, wiz.AttackValue);
             Assert.AreEqual(expectedDefenseValue, wiz.DefenseValue);
 
