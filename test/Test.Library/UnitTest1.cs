@@ -166,7 +166,7 @@ namespace Test.Library
         }
 
 
-                [Test]
+        [Test]
         public void TestArcherAttack()
         {
             int expectedHealthAfterAttack = 100;
