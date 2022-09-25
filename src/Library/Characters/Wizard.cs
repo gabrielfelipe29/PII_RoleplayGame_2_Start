@@ -6,14 +6,24 @@ namespace RoleplayGame
 
         public Wizard(string name)
         {
-            this.Name = name;
+            if (!string.IsNullOrEmpty(name))
+            {
+                this.Name = name;
+            }
+            else
+            {
+                this.Name = null;
+            }
         }
 
         public string Name { get; set; }
 
         public SpellsBook SpellsBook { get; set; }
 
-        public Staff Staff { get; set; }
+        public Staff Staff
+        {
+            get; set;
+        }
 
         public int AttackValue
         {
