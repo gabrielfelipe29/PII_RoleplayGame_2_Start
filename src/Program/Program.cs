@@ -23,7 +23,6 @@ namespace Program
             Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
 
             gimli.ReceiveAttack(gandalf.AttackValue);
-
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
 
             gimli.Cure();
