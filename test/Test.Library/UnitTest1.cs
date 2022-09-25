@@ -163,17 +163,44 @@ namespace Test.Library
                 gimli.ReceiveAttack(gandalf.AttackValue);
             }
             Assert.AreEqual(expectedvidadelatacado, gimli.Health);
-
-
-
-
-
-        
-        
-
-
         }
 
+
+                [Test]
+        public void TestArcherAttack()
+        {
+            int expectedHealthAfterAttack = 100;
+            Archer archer1 = new Archer("archer1");
+            Archer archer2 = new Archer("archer2");
+            archer1.Helmet = new Helmet();
+            archer2.Bow = new Bow();
+            int expectedDefense = archer1.DefenseValue;
+            int expectedDamage = archer2.AttackValue;
+            if (archer1.DefenseValue < archer2.AttackValue)
+            {
+                expectedHealthAfterAttack = archer1.Health - archer2.AttackValue + archer1.DefenseValue;
+                archer1.ReceiveAttack(archer2.AttackValue);
+            }
+            Assert.AreEqual(expectedHealthAfterAttack, archer1.Health);
+        }
+
+        [Test]
+        public void TestArcherDefense()
+        {
+            int expectedHealthAfterAttack = 100;
+            Archer archer1 = new Archer("archer1");
+            Archer archer2 = new Archer("archer2");
+            archer1.Helmet = new Helmet();
+            archer2.Bow = new Bow();
+            int expectedDefense = archer1.DefenseValue;
+            int expectedDamage = archer2.AttackValue;
+            if (archer1.DefenseValue < archer2.AttackValue)
+            {
+                expectedHealthAfterAttack = archer1.Health - archer2.AttackValue + archer1.DefenseValue;
+                archer1.ReceiveAttack(archer2.AttackValue);
+            }
+            Assert.AreEqual(expectedDefense, archer1.DefenseValue);
+        }
 
 
     }
