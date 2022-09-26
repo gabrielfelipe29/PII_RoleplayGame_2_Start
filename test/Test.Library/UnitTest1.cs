@@ -202,6 +202,40 @@ namespace Test.Library
             Assert.AreEqual(expectedDefense, archer1.DefenseValue);
         }
 
-
+        [Test]
+        public void TestKnightDefense()
+        {
+            int expectedHealthAfterAttack = 100;
+            Knight Arturo = new Knight("Arturo");
+            Arturo.Shield = new Shield();
+            Arturo.Armor = new Armor();
+            Knight Pablo = new Knight("Pablo");
+            Pablo.Sword = new Sword();
+            int expectedDamage = Pablo.AttackValue;
+            int expectedDefense = Arturo.DefenseValue;
+            if (Arturo.DefenseValue < Pablo.AttackValue)
+            {
+                expectedHealthAfterAttack = Arturo.Health - Pablo.AttackValue + Arturo.DefenseValue;
+                Arturo.ReceiveAttack(Pablo.AttackValue);
+            }
+            Assert.AreEqual(expectedHealthAfterAttack, Arturo.Health);
+        }
+        [Test]
+        public void TestKnighAttack()
+        {
+            int expectedArcherHealth = 80;
+            Knight Arturo = new Knight("Arturo");
+            Arturo.Sword = new Sword();
+            Archer Pablo = new Archer("Pablo");
+            Pablo.Helmet = new Helmet();
+            int expectedDamage = Pablo.AttackValue;
+            int expectedDefense = Arturo.DefenseValue;
+            if (Arturo.AttackValue > Pablo.DefenseValue)
+            {
+                Console.WriteLine("Pablo ha sido atacado");
+                Pablo.ReceiveAttack(Arturo.AttackValue);
+            }
+            Assert.AreEqual(expectedArcherHealth, Pablo.Health);
+        }
     }
 }
