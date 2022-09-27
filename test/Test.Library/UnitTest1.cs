@@ -128,20 +128,13 @@ namespace Test.Library
             gandalf.SpellsBook = book;
             gandalf.Staff = new Staff();
             Gimbli.Axe = new Axe();
-            int expectedHealthAfterAttack =(gandalf.Health + gandalf.DefenseValue)- (8*(Gimbli.AttackValue)) ;
-            if ( expectedHealthAfterAttack< 0)
+            int expectedDefenseAfterAttack = gandalf.DefenseValue - Gimbli.AttackValue ;
+            if ( expectedDefenseAfterAttack< 0)
             {
-                expectedHealthAfterAttack=0;
+                expectedDefenseAfterAttack=0;
             }
             gandalf.ReceiveAttack(Gimbli.AttackValue);
-            gandalf.ReceiveAttack(Gimbli.AttackValue);
-            gandalf.ReceiveAttack(Gimbli.AttackValue);
-            gandalf.ReceiveAttack(Gimbli.AttackValue);
-            gandalf.ReceiveAttack(Gimbli.AttackValue);
-            gandalf.ReceiveAttack(Gimbli.AttackValue);
-            gandalf.ReceiveAttack(Gimbli.AttackValue);
-            gandalf.ReceiveAttack(Gimbli.AttackValue);
-            Assert.AreEqual(expectedHealthAfterAttack, gandalf.Health);
+            Assert.AreEqual(expectedDefenseAfterAttack, gandalf.DefenseValue);
         }
         
         [Test]
@@ -158,7 +151,7 @@ namespace Test.Library
             gimli.Axe = new Axe();
             gimli.Helmet = new Helmet();
             gimli.Shield = new Shield();
-            int expectedvidadelatacado=(gimli.Health+gimli.DefenseValue)-gandalf.AttackValue;
+            int expectedvidadelatacado=(gimli.Health + gimli.DefenseValue)-gandalf.AttackValue;
             if (expectedvidadelatacado < 0)
             {
                 expectedvidadelatacado=0;
