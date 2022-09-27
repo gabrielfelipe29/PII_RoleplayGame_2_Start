@@ -112,10 +112,10 @@ namespace Test.Library
             gandalf.SpellsBook = book;
             gandalf.Staff = new Staff();
             Gimbli.Axe = new Axe();
-            int expectedDefenseAfterAttack = gandalf.DefenseValue - Gimbli.AttackValue ;
-            if ( expectedDefenseAfterAttack< 0)
+            int expectedDefenseAfterAttack = gandalf.DefenseValue - Gimbli.AttackValue;
+            if ( expectedDefenseAfterAttack < 0)
             {
-                expectedDefenseAfterAttack=0;
+                expectedDefenseAfterAttack = 0;
             }
             gandalf.ReceiveAttack(Gimbli.AttackValue);
             Assert.AreEqual(expectedDefenseAfterAttack, gandalf.DefenseValue);
@@ -148,38 +148,51 @@ namespace Test.Library
         [Test]
         public void TestArcherAttack()
         {
+
             int expectedHealthAfterAttack = 100;
+
             Archer archer1 = new Archer("archer1");
             Archer archer2 = new Archer("archer2");
+
             archer1.Helmet = new Helmet();
             archer2.Bow = new Bow();
             int expectedDefense = archer1.DefenseValue;
-            int expectedDamage = archer2.AttackValue;
+
             if (archer1.DefenseValue < archer2.AttackValue)
             {
-                expectedHealthAfterAttack = archer1.Health - archer2.AttackValue + archer1.DefenseValue;
-                archer1.ReceiveAttack(archer2.AttackValue);
+                expectedHealthAfterAttack = archer1.Health + archer1.DefenseValue - archer2.AttackValue;
             }
-            Assert.AreEqual(expectedHealthAfterAttack, archer1.Health);
+            else 
+            {
+                expectedDefense = archer1.DefenseValue - archer2.AttackValue;
+            }
+
+            archer1.ReceiveAttack(archer2.AttackValue);
+            Assert.AreEqual(expectedDefense, archer1.DefenseValue);
+
         }
 
         [Test]
         public void TestArcherDefense()
         {
-            int expectedHealthAfterAttack = 100;
             Archer archer1 = new Archer("archer1");
             Archer archer2 = new Archer("archer2");
-            archer1.Helmet = new Helmet();
-            archer2.Bow = new Bow();
-            int expectedDefense = archer1.DefenseValue;
-            int expectedDamage = archer2.AttackValue;
-            if (archer1.DefenseValue < archer2.AttackValue)
+
+            archer1.Bow = new Bow();
+            archer2.Helmet = new Helmet();
+
+            int expectedDefenseAfterAttack = archer2.DefenseValue - archer1.AttackValue;
+
+            if (expectedDefenseAfterAttack < 0)
             {
-                expectedHealthAfterAttack = archer1.Health - archer2.AttackValue + archer1.DefenseValue;
-                archer1.ReceiveAttack(archer2.AttackValue);
+                expectedDefenseAfterAttack = 0;
             }
-            Assert.AreEqual(expectedDefense, archer1.DefenseValue);
+
+            archer2.ReceiveAttack(archer1.AttackValue);
+            Assert.AreEqual(expectedDefenseAfterAttack, archer2.DefenseValue);
         }
+        
+
 
         [Test]
         public void TestKnightDefense()
