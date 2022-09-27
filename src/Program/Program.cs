@@ -18,7 +18,6 @@ namespace Program
             gimli.Axe = new Axe();
             gimli.Helmet = new Helmet();
             gimli.Shield = new Shield();
-
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
             Console.WriteLine($"Gandalf attacks Gimli with ⚔️ {gandalf.AttackValue}");
 

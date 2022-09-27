@@ -121,7 +121,6 @@ namespace Test.Library
         [Test]
         public void TestWizardDefense()
         {
-            int expectedHealthAfterAttack =100;
             SpellsBook book = new SpellsBook();
             book.Spells = new Spell[]{ new Spell() };
             Wizard gandalf = new Wizard("Gandalf");
@@ -129,18 +128,25 @@ namespace Test.Library
             gandalf.SpellsBook = book;
             gandalf.Staff = new Staff();
             Gimbli.Axe = new Axe();
-            if (gandalf.DefenseValue < Gimbli.AttackValue)
+            int expectedHealthAfterAttack =(gandalf.Health + gandalf.DefenseValue)- (8*(Gimbli.AttackValue)) ;
+            if ( expectedHealthAfterAttack< 0)
             {
-                expectedHealthAfterAttack = (gandalf.Health + gandalf.DefenseValue)- Gimbli.AttackValue;
-                gandalf.ReceiveAttack(Gimbli.AttackValue);
+                expectedHealthAfterAttack=0;
             }
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
+            gandalf.ReceiveAttack(Gimbli.AttackValue);
             Assert.AreEqual(expectedHealthAfterAttack, gandalf.Health);
         }
         
         [Test]
         public void TestWizardAttack()
         {
-            int expectedvidadelatacado=0;
             SpellsBook book = new SpellsBook();
             book.Spells = new Spell[]{ new Spell() };
 
@@ -152,16 +158,12 @@ namespace Test.Library
             gimli.Axe = new Axe();
             gimli.Helmet = new Helmet();
             gimli.Shield = new Shield();
-            gimli.ReceiveAttack(gandalf.AttackValue);
-            if (gimli.DefenseValue < gandalf.AttackValue)
+            int expectedvidadelatacado=(gimli.Health+gimli.DefenseValue)-gandalf.AttackValue;
+            if (expectedvidadelatacado < 0)
             {
-                expectedvidadelatacado = (gimli.Health  + gimli.DefenseValue) - gandalf.AttackValue;
-                if (expectedvidadelatacado< 0) 
-                {
-                    expectedvidadelatacado=0;
-                }
-                gimli.ReceiveAttack(gandalf.AttackValue);
+                expectedvidadelatacado=0;
             }
+            gimli.ReceiveAttack(gandalf.AttackValue);
             Assert.AreEqual(expectedvidadelatacado, gimli.Health);
         }
 
