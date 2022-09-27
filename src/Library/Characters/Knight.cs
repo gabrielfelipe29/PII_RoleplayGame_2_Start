@@ -3,7 +3,8 @@ namespace RoleplayGame
     public class Knight : ICharacter, IAttackItem, IDefenseItem
     {
         private int health = 100;
-
+        private bool firstTimeInDefense = true;
+        private int defenseValue;
         public Knight(string name)
         {
             this.Name = name;
@@ -27,9 +28,27 @@ namespace RoleplayGame
 
         public int DefenseValue
         {
+
+
             get
             {
-                return Armor.DefenseValue + Shield.DefenseValue;
+                if (this.firstTimeInDefense)
+                {
+                    //solo por primera vez, setea el defenseValue como la suma de los items de defensa 
+                    this.firstTimeInDefense = false;
+                    this.defenseValue = Armor.DefenseValue + Shield.DefenseValue;
+                    return this.defenseValue;
+                }
+                else
+                {
+                    return this.defenseValue;
+                }
+            }
+            private set
+            {
+
+                this.defenseValue = value < 0 ? 0 : value;
+
             }
         }
 
@@ -49,7 +68,15 @@ namespace RoleplayGame
         {
             if (this.DefenseValue < power)
             {
+                //si la defensa es menor que el poder, restarle la diferencia a la vida y setear defensevalue en 0
                 this.Health -= power - this.DefenseValue;
+                this.DefenseValue = 0;
+            }
+            else
+            {
+                // si la defensa es mayor al poder, restare a la defensa el poder
+                this.DefenseValue -= power;
+
             }
         }
 

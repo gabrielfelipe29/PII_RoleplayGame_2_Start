@@ -8,7 +8,7 @@ namespace Program
         static void Main(string[] args)
         {
             SpellsBook book = new SpellsBook();
-            book.Spells = new Spell[]{ new Spell() };
+            book.Spells = new Spell[] { new Spell() };
 
             Wizard gandalf = new Wizard("Gandalf");
             gandalf.Staff = new Staff();
@@ -24,11 +24,52 @@ namespace Program
 
             gimli.ReceiveAttack(gandalf.AttackValue);
 
-            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
 
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+            gandalf.ReceiveAttack(gimli.AttackValue);
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+
+
+            Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+            gandalf.Cure();
             gimli.Cure();
 
+
+
+
             Console.WriteLine($"Gimli has ❤️ {gimli.Health}");
+            Console.WriteLine($"Gandalf has ❤️ {gandalf.Health}");
+
         }
     }
 }
