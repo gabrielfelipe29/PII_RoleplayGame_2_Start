@@ -197,37 +197,38 @@ namespace Test.Library
         [Test]
         public void TestKnightDefense()
         {
-            int expectedHealthAfterAttack = 100;
             Knight Arturo = new Knight("Arturo");
             Arturo.Shield = new Shield();
             Arturo.Armor = new Armor();
+            int expectedDefense = Arturo.DefenseValue;
             Knight Pablo = new Knight("Pablo");
             Pablo.Sword = new Sword();
-            int expectedDamage = Pablo.AttackValue;
-            int expectedDefense = Arturo.DefenseValue;
             if (Arturo.DefenseValue < Pablo.AttackValue)
             {
-                expectedHealthAfterAttack = Arturo.Health - Pablo.AttackValue + Arturo.DefenseValue;
-                Arturo.ReceiveAttack(Pablo.AttackValue);
+                expectedDefense = 0;
             }
-            Assert.AreEqual(expectedHealthAfterAttack, Arturo.Health);
+            else
+            {
+                expectedDefense= Arturo.DefenseValue - Pablo.AttackValue;
+            }
+            Arturo.ReceiveAttack(Pablo.AttackValue);
+            Assert.AreEqual(expectedDefense, Arturo.DefenseValue);
         }
         [Test]
         public void TestKnighAttack()
         {
-            int expectedArcherHealth = 80;
+            int expectedArcherHealth = 100;
             Knight Arturo = new Knight("Arturo");
             Arturo.Sword = new Sword();
             Archer Pablo = new Archer("Pablo");
             Pablo.Helmet = new Helmet();
-            int expectedDamage = Pablo.AttackValue;
-            int expectedDefense = Arturo.DefenseValue;
             if (Arturo.AttackValue > Pablo.DefenseValue)
             {
-                Console.WriteLine("Pablo ha sido atacado");
-                Pablo.ReceiveAttack(Arturo.AttackValue);
+                expectedArcherHealth = 100+Pablo.DefenseValue-Arturo.AttackValue;
             }
+            Pablo.ReceiveAttack(Arturo.AttackValue);
             Assert.AreEqual(expectedArcherHealth, Pablo.Health);
         }
+        
     }
 }
