@@ -113,7 +113,7 @@ namespace Test.Library
             gandalf.Staff = new Staff();
             Gimbli.Axe = new Axe();
             int expectedDefenseAfterAttack = gandalf.DefenseValue - Gimbli.AttackValue;
-            if ( expectedDefenseAfterAttack < 0)
+            if (expectedDefenseAfterAttack < 0)
             {
                 expectedDefenseAfterAttack = 0;
             }
@@ -135,7 +135,7 @@ namespace Test.Library
             gimli.Axe = new Axe();
             gimli.Helmet = new Helmet();
             gimli.Shield = new Shield();
-            int expectedvidadelatacado=(gimli.Health + gimli.DefenseValue)-gandalf.AttackValue;
+            int expectedvidadelatacado = (gimli.Health + gimli.DefenseValue) - gandalf.AttackValue;
             if (expectedvidadelatacado < 0)
             {
                 expectedvidadelatacado = 0;
@@ -162,7 +162,7 @@ namespace Test.Library
             {
                 expectedHealthAfterAttack = archer1.Health + archer1.DefenseValue - archer2.AttackValue;
             }
-            else 
+            else
             {
                 expectedDefense = archer1.DefenseValue - archer2.AttackValue;
             }
@@ -191,7 +191,7 @@ namespace Test.Library
             archer2.ReceiveAttack(archer1.AttackValue);
             Assert.AreEqual(expectedDefenseAfterAttack, archer2.DefenseValue);
         }
-        
+
 
 
         [Test]
@@ -209,7 +209,7 @@ namespace Test.Library
             }
             else
             {
-                expectedDefense= Arturo.DefenseValue - Pablo.AttackValue;
+                expectedDefense = Arturo.DefenseValue - Pablo.AttackValue;
             }
             Arturo.ReceiveAttack(Pablo.AttackValue);
             Assert.AreEqual(expectedDefense, Arturo.DefenseValue);
@@ -224,11 +224,11 @@ namespace Test.Library
             Pablo.Helmet = new Helmet();
             if (Arturo.AttackValue > Pablo.DefenseValue)
             {
-                expectedArcherHealth = 100+Pablo.DefenseValue-Arturo.AttackValue;
+                expectedArcherHealth = 100 + Pablo.DefenseValue - Arturo.AttackValue;
             }
             Pablo.ReceiveAttack(Arturo.AttackValue);
             Assert.AreEqual(expectedArcherHealth, Pablo.Health);
         }
-        
+
     }
 }
